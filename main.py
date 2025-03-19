@@ -41,12 +41,6 @@ async def get_content(request: Request, gclid: str = None):
             all_ips.add(ip)
 
     save_ips()  # Save IPs to file
-
-    if ip in known_ips:
-        return templates.TemplateResponse("main.html", {"request": request})
-    if gclid:
-        return templates.TemplateResponse("main.html", {"request": request, "gclid": gclid})
-    
     return templates.TemplateResponse("main.html", {"request": request})
 
 @app.get("/all-ips/")
